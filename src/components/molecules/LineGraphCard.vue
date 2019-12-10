@@ -1,6 +1,6 @@
 <template>
   <div class="graph">
-    <card-title :value="name"></card-title>
+    <div>{{ name }}</div>
     <line-chart
       class="chart"
       :data="getChartData()"
@@ -64,7 +64,7 @@ export default Vue.extend({
   },
 });
 </script>
-<style>
+<style scoped lang="scss">
 .graph {
   display: inline-block;
   margin: 0 0 40px 40px;

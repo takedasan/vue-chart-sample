@@ -1,34 +1,37 @@
 <template>
   <div>
     <div class="top">
-      <graph-card
+      <line-graph-card
         name="ユーザー数 推移"
         :data="getUserData"
-        :label="getLabelList"
-      ></graph-card>
-      <graph-card
-        name="プレビュー数 推移"
-        :data="getPreviewData"
-        :label="getLabelList"
-      ></graph-card>
-      <list-card name="データ一覧"></list-card>
+        :label="getUserLabelList"
+      ></line-graph-card>
+      <pie-graph-card
+        name="ユーザー年齢 割合"
+        :data="getAgeData"
+        :label="getAgeLabelList"
+      >
+      </pie-graph-card>
     </div>
   </div>
 </template>
 <script>
-import GraphCard from '../molecules/GraphCard';
+import LineGraphCard from '../molecules/LineGraphCard.vue';
+import PieGraphCard from '../molecules/PieGraphCard.vue';
 
 export default {
   components: {
-    GraphCard,
+    LineGraphCard,
+    PieGraphCard,
   },
   computed: {
+    // User
     getUserData() {
       return [...Array(30)].map(
         () => 300 + Math.floor(Math.random() * Math.floor(200))
       );
     },
-    getLabelList() {
+    getUserLabelList() {
       const date = new Date();
       date.setDate(0);
       return [...Array(30)].map(() => {
@@ -36,15 +39,19 @@ export default {
         return date.toLocaleDateString();
       });
     },
-    getPreviewData() {
-      return [...Array(30)].map(
-        () => 300 + Math.floor(Math.random() * Math.floor(200))
+    // Age
+    getAgeData() {
+      return [...Array(5)].map(() =>
+        Math.floor(Math.random() * Math.floor(10))
       );
+    },
+    getAgeLabelList() {
+      return ['10代', '20代', '30代', '40代', '50代'];
     },
   },
 };
 </script>
-<style>
+<style scoped lang="scss">
 .top {
   padding: 66px 0 0 200px;
 }
