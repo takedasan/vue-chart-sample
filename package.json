@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@types/chart.js": "^2.9.4",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "node-sass": "^4.13.0",
     "sass-loader": "^8.0.0",
     "vue": "^2.6.10",
